@@ -15,6 +15,10 @@ docker compose up
 Open <http://localhost:3000>. The compose file runs the mock API and the published frontend image
 (`image:`, not `build:`). nginx serves the app and forwards `/api/*` to `http://mock-api:8001`.
 
+> **Note on the mock API image.** `meetrj/callzo-mock-usage-api` is published for ARM, so the compose file pins
+> `platform: linux/arm64` on `mock-api`. On Intel/AMD machines Docker Desktop runs it through emulation and may
+> print a platform warning, which is harmless. The frontend image is published for both `amd64` and `arm64`.
+
 To run from source instead (needs Node 20+ and the mock API on port 8001):
 
 ```bash
@@ -32,7 +36,8 @@ docker login
 This builds for both `linux/amd64` and `linux/arm64` (so it runs on Intel, AMD and Apple Silicon
 machines), pushes it, and writes the image name into `docker-compose.yml`. Then set the Docker Hub
 repository to **Public**, and test with a clean pull: `docker rmi yourname/callzo-task2-frontend:1.0.0`
-followed by `docker compose up`.
+followed by `docker compose up`. The published image for this submission is
+`nithinkorra11/callzo-task2-frontend:1.0.0`.
 
 ## Where state lives, and why
 

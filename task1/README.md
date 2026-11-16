@@ -14,6 +14,10 @@ That starts Postgres, the API (port 8000) and the provided simulator, which runs
 scenario once and exits. No other setup is needed: development defaults are built into
 `docker-compose.yml`. To use your own secrets, copy `.env.example` to `.env` first.
 
+> **Note on the simulator image.** `meetrj/callzo-webhook-simulator` is published for ARM. The compose file pins
+> `platform: linux/arm64` so it also runs on Intel/AMD machines through Docker Desktop's emulation.
+> A platform warning may appear; it is harmless.
+
 To run one scenario only, change `--scenario all` in the `simulator` command to
 `normal`, `duplicates`, `out_of_order`, `late`, `malformed`, `bad_signature` or `cap_burst`.
 
